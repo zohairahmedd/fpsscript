@@ -26,7 +26,7 @@ def video_to_frames(input_video_path, output_dir):
             print(f"Frame {i} failed to save")
             continue
 
-        frame_name = os.path.join(output_dir, f"frame_{i:04d}.jpg")
+        frame_name = os.path.join(output_dir, f"frame_{i:04d}.jpg") # only 4 digits? usability
         cv2.imwrite(frame_name, frame) # save current frame in specified directory with name and format
         print(f"Saved frame {i} to {frame_name}")
 
@@ -34,6 +34,7 @@ def video_to_frames(input_video_path, output_dir):
 
     print(f"Extracted {count_total_frames} frames from {input_video_path}")
 
+# is there a better way to do this? instead of inputting path 
 if __name__ == "__main__":
     input_video_path = "absolute path" # for python, need double slash
     output_dir = "absolute path"
