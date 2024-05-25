@@ -2,6 +2,21 @@ import cv2
 import os
 import argparse
 
+def main():
+    """
+    take command line arguments input for the absolute paths of both the location of video and directory to store frames
+
+    arguments:
+        none
+    """
+    parser = argparse.ArgumentParser(description='processing some video.') # necessary for implementing command-line
+    parser.add_argument('input_video_path', type=str, help='absolute path to video') # adds argument input_video_path to the parser
+    parser.add_argument('output_dir', type=str, help='directory to store frames') # adds argument output_dir to the parser
+
+    args = parser.parse_args() # allows us to use the arguments in the parser (args.argument_name)
+
+    video_to_frames(args.input_video_path, args.output_dir) 
+    
 def video_to_frames(input_video_path, output_dir):
     """
     extract frames from a video file and save them as separate images in some directory (file)
@@ -34,21 +49,6 @@ def video_to_frames(input_video_path, output_dir):
     video.release() # fclose basically for video
 
     print(f"Extracted {count_total_frames} frames from {input_video_path}")
-
-def main():
-    """
-    take command line arguments input for the absolute paths of both the location of video and directory to store frames
-
-    arguments:
-        none
-    """
-    parser = argparse.ArgumentParser(description='processing some video.')
-    parser.add_argument('input_video_path', type=str, help='absolute path to video')
-    parser.add_argument('output_dir', type=str, help='directory to store frames')
-
-    args = parser.parse_args()
-
-    video_to_frames(args.input_video_path, args.output_dir)
 
 if __name__ == '__main__':
     main()
