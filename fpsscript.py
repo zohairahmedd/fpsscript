@@ -1,5 +1,6 @@
 import cv2
 import os
+import argparse
 
 def video_to_frames(input_video_path, output_dir):
     """
@@ -34,8 +35,20 @@ def video_to_frames(input_video_path, output_dir):
 
     print(f"Extracted {count_total_frames} frames from {input_video_path}")
 
-# is there a better way to do this? instead of inputting path 
-if __name__ == "__main__":
-    input_video_path = "absolute path" # for python, need double slash
-    output_dir = "absolute path"
-    video_to_frames(input_video_path, output_dir)
+def main():
+    """
+    take command line arguments input for the absolute paths of both the location of video and directory to store frames
+
+    arguments:
+        none
+    """
+    parser = argparse.ArgumentParser(description='processing some video.')
+    parser.add_argument('input_video_path', type=str, help='absolute path to video')
+    parser.add_argument('output_dir', type=str, help='directory to store frames')
+
+    args = parser.parse_args()
+
+    video_to_frames(args.input_video_path, args.output_dir)
+
+if __name__ == '__main__':
+    main()
