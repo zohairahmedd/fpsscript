@@ -36,13 +36,14 @@ def video_to_frames(input_video_path, output_dir):
     count_total_frames = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
 
     for i in range (count_total_frames): # loop for every frame
+        counter = i + 1
         check, frame = video.read()
     
         if not check: # if check is false, then frame was not read
             print(f"Frame {i} failed to save")
             continue
 
-        frame_name = os.path.join(output_dir, f"frame_{i:04d}.jpg") # only 4 digits? usability
+        frame_name = os.path.join(output_dir, f"frame_{counter}.jpg")
         cv2.imwrite(frame_name, frame) # save current frame in specified directory with name and format
         print(f"Saved frame {i} to {frame_name}")
 
