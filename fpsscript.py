@@ -40,12 +40,12 @@ def video_to_frames(input_video_path, output_dir):
         check, frame = video.read()
     
         if not check: # if check is false, then frame was not read
-            print(f"Frame {i} failed to save")
+            print(f"Frame {counter} failed to save")
             continue
 
         frame_name = os.path.join(output_dir, f"frame_{counter}.jpg")
         cv2.imwrite(frame_name, frame) # save current frame in specified directory with name and format
-        print(f"Saved frame {i} to {frame_name}")
+        print(f"Saved frame {counter} to {frame_name}")
 
     video.release() # fclose basically for video
 
