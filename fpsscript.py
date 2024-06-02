@@ -43,7 +43,7 @@ def video_to_frames(input_video_path, output_dir):
             print(f"Frame {counter} failed to save")
             continue
 
-        frame_name = os.path.join(output_dir, f"frame_{counter}.jpg")
+        frame_name = os.path.join(output_dir, f"frame_{counter}.png")
         cv2.imwrite(frame_name, frame) # save current frame in specified directory with name and format
         print(f"Saved frame {counter} to {frame_name}")
 
