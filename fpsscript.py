@@ -10,7 +10,7 @@ def main():
         none
     """
     parser = argparse.ArgumentParser(description='processing some video.') # necessary for implementing command-line
-    parser.add_argument('input_video_path', type=str, help='absolute path to video') # adds argument input_video_path to the parser
+    parser.add_argument('input_video_path', type=str, help='path to video') # adds argument input_video_path to the parser
     parser.add_argument('output_dir', type=str, help='directory to store frames') # adds argument output_dir to the parser
 
     args = parser.parse_args() # allows us to use the arguments in the parser (args.argument_name)
@@ -28,6 +28,7 @@ def video_to_frames(input_video_path, output_dir):
 
     os.makedirs(output_dir, exist_ok=True) # create the directory IF it doesnt exist
     video = cv2.VideoCapture(input_video_path)
+    filename = os.path.basename(input_video_path)
 
     if not video.isOpened():
         print(f"Error opening video file {input_video_path}")
@@ -43,7 +44,7 @@ def video_to_frames(input_video_path, output_dir):
             print(f"Frame {counter} failed to save")
             continue
 
-        frame_name = os.path.join(output_dir, f"frame_{counter}.png")
+        frame_name = os.path.join(output_dir, f"{filename}_frame_{counter}.png")
         cv2.imwrite(frame_name, frame) # save current frame in specified directory with name and format
         print(f"Saved frame {counter} to {frame_name}")
 
