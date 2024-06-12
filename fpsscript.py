@@ -29,6 +29,7 @@ def video_to_frames(input_video_path, output_dir):
     os.makedirs(output_dir, exist_ok=True) # create the directory IF it doesnt exist
     video = cv2.VideoCapture(input_video_path)
     filename = os.path.basename(input_video_path)
+    filename = filename.replace(".mp4","",4)
 
     if not video.isOpened():
         print(f"Error opening video file {input_video_path}")
